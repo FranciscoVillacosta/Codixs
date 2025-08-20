@@ -1,12 +1,9 @@
 {
   "name": "Menú Digital",
   "short_name": "Menú",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "/Codixs/index.html",
+  "scope": "/Codixs/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ff6600"
-  "display": "standalone"
-
 }
-
