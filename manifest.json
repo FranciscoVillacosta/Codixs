@@ -1,16 +1,7 @@
-{
-  "name": "Menú Digital",
-  "short_name": "TO-DO LIST",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
-  "icons": [
-    {
-      "src": "icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ]
-}
-
+cache.addAll([
+  "index.html",
+  "carrito.html",
+  "style.css",
+  "app.js",
+  "manifest.json"
+]);
