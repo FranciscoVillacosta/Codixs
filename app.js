@@ -69,7 +69,7 @@ if(btnPedido){
     carrito.forEach(p=> mensaje += `- ${p.nombre} $${p.precio}\n`);
     const total = carrito.reduce((sum,p)=>sum+p.precio,0);
     mensaje += `Total: $${total}`;
-    window.open(`https://wa.me/tu-numero-aqui?text=${encodeURIComponent(mensaje)}`);
+    window.open(`https://wa.me/528771288865?text=${encodeURIComponent(mensaje)}`);
     carrito = [];
     localStorage.setItem("carrito", JSON.stringify(carrito));
     mostrarCarrito();
