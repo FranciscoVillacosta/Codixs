@@ -1,7 +1,13 @@
 .producto-card img {
   height: 50%;
   object-fit: cover;
-}
+}.navbar {
+  background-color: black !important;
+  color:white/* tu color personalizado */
+}body{background:black;
+     }
+
+
 
 
 
