@@ -1,6 +1,6 @@
 {
   "name": "Menú Digital",
-  "short_name": "Menú",
+  "short_name": "TO-DO LIST",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -13,3 +13,4 @@
     }
   ]
 }
+
