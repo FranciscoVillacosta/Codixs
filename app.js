@@ -6,7 +6,7 @@ let productos = [
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-// Mostrar menú
+// Mostrar menú con contador
 function mostrarMenu(){
   const menu = document.getElementById("menu");
   if(!menu) return;
@@ -22,7 +22,12 @@ function mostrarMenu(){
         <div class="card-body">
           <h5 class="card-title">${p.nombre}</h5>
           <p class="card-text">$${p.precio}</p>
-          <button class="btn btn-primary" onclick="agregarAlCarrito(${p.id})">Agregar</button>
+          <div class="input-group mb-2">
+            <button class="btn btn-outline-secondary" onclick="modCantidad(${p.id}, -1)">-</button>
+            <input type="number" id="cantidad-${p.id}" class="form-control text-center" value="1" min="1">
+            <button class="btn btn-outline-secondary" onclick="modCantidad(${p.id}, 1)">+</button>
+          </div>
+          <button class="btn btn-primary w-100" onclick="agregarAlCarrito(${p.id})">Agregar al carrito</button>
         </div>
       </div>
     `;
@@ -31,12 +36,25 @@ function mostrarMenu(){
   menu.appendChild(row);
 }
 
-// Agregar al carrito
+// Modificar cantidad del input
+function modCantidad(id, delta){
+  const input = document.getElementById(`cantidad-${id}`);
+  let val = parseInt(input.value);
+  val += delta;
+  if(val < 1) val = 1;
+  input.value = val;
+}
+
+// Agregar al carrito con cantidad
 function agregarAlCarrito(id){
+  const input = document.getElementById(`cantidad-${id}`);
+  let cantidad = parseInt(input.value);
   const producto = productos.find(p=>p.id===id);
-  carrito.push(producto);
+  for(let i=0;i<cantidad;i++){
+    carrito.push(producto);
+  }
   localStorage.setItem("carrito", JSON.stringify(carrito));
-  alert(`${producto.nombre} agregado al carrito`);
+  alert(`${cantidad} x ${producto.nombre} agregado(s) al carrito`);
 }
 
 // Mostrar carrito
@@ -46,30 +64,56 @@ function mostrarCarrito(){
   if(!lista) return;
   lista.innerHTML = "";
   let total = 0;
+
+  // Contar productos por cantidad
+  let contados = {};
   carrito.forEach(p=>{
+    if(contados[p.nombre]){
+      contados[p.nombre].cantidad++;
+    } else {
+      contados[p.nombre] = {precio:p.precio, cantidad:1};
+    }
+  });
+
+  for(const [nombre, info] of Object.entries(contados)){
     const li = document.createElement("li");
     li.className = "list-group-item d-flex justify-content-between align-items-center";
-    li.textContent = p.nombre;
+    li.textContent = `${nombre} x ${info.cantidad}`;
     const span = document.createElement("span");
     span.className = "badge bg-primary rounded-pill";
-    span.textContent = `$${p.precio}`;
+    span.textContent = `$${info.precio * info.cantidad}`;
     li.appendChild(span);
     lista.appendChild(li);
-    total += p.precio;
-  });
+    total += info.precio * info.cantidad;
+  }
+
   if(totalSpan) totalSpan.textContent = total;
 }
 
-// Realizar pedido por WhatsApp
+// Botón pedido por WhatsApp
 const btnPedido = document.getElementById("btnPedido");
 if(btnPedido){
   btnPedido.addEventListener("click", ()=>{
     if(carrito.length===0){ alert("El carrito está vacío"); return; }
+
+    let contados = {};
+    carrito.forEach(p=>{
+      if(contados[p.nombre]){
+        contados[p.nombre].cantidad++;
+      } else {
+        contados[p.nombre] = {precio:p.precio, cantidad:1};
+      }
+    });
+
     let mensaje = "Hola, quiero hacer el siguiente pedido:\n";
-    carrito.forEach(p=> mensaje += `- ${p.nombre} $${p.precio}\n`);
-    const total = carrito.reduce((sum,p)=>sum+p.precio,0);
+    let total = 0;
+    for(const [nombre, info] of Object.entries(contados)){
+      mensaje += `- ${nombre} x ${info.cantidad} = $${info.precio*info.cantidad}\n`;
+      total += info.precio*info.cantidad;
+    }
     mensaje += `Total: $${total}`;
-    window.open(`https://wa.me/528771288865?text=${encodeURIComponent(mensaje)}`);
+
+    window.open(`https://wa.me/tu-numero-aqui?text=${encodeURIComponent(mensaje)}`);
     carrito = [];
     localStorage.setItem("carrito", JSON.stringify(carrito));
     mostrarCarrito();
@@ -80,7 +124,7 @@ if(btnPedido){
 mostrarMenu();
 mostrarCarrito();
 
-// Service Worker PWA
+// Registrar Service Worker
 if("serviceWorker" in navigator){
   navigator.serviceWorker.register("sw.js");
 }
