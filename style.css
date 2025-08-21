@@ -1,4 +1,4 @@
-li.done {
-  text-decoration: line-through;
-  color: gray;
+.producto-card img {
+  height: 120px;
+  object-fit: cover;
 }
