@@ -1,6 +1,7 @@
 .producto-card img {
-  height: 30px;
+  height: 50%;
   object-fit: cover;
 }
+
 
 
