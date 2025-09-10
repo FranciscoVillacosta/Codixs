@@ -1,28 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú Restaurante</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITSAHACK</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url(assest/fondo.jpg) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card {
+            border-radius: 20px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .form-control:focus {
+            border-color: #2d79f3;
+            box-shadow: 0 0 0 0.2rem rgba(45, 121, 243, 0.25);
+        }
+        .btn-custom {
+            background-color: #151717;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #252727;
+        }
+        .btn-register {
+            background-color: #03b2b2;
+            color: white;
+        }
+        .btn-register:hover {
+            background-color: #029696;
+        }
+        .share-btn {
+            background-color: #2d79f3;
+            color: white;
+        }
+        .share-btn:hover {
+            background-color: #2461c7;
+        }
+        .logo {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 30px auto;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">🍽️Los Trompos</a>
-    <a class="btn btn-light" href="carrito.html">🛒 Carrito</a>
-  </div>
-</nav>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card col-md-6 col-lg-4">
+            <img src="assest/masculino.png" alt="Logo" class="logo">
 
-<div class="container mt-4" id="menu">
-  <!-- Productos se cargan aquí desde app.js -->
-</div>
+            <form>
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" placeholder="Ingrese Usuario">
+                </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="app.js"></script>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Ingresar Contraseña">
+                </div>
+
+                <button type="submit" class="btn btn-custom w-100 mb-2">Iniciar Sesión</button>
+                <button type="button" class="btn btn-register w-100 mb-2" onclick="window.location.href='registro.html'">Registrarme</button>
+                <button type="button" class="btn share-btn w-100" onclick="window.open('https://www.google.com/maps?q=24.034555036700397,-104.64785804078741', '_blank')">Compartir Ubicación</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
 
