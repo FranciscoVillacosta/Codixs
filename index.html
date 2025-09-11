@@ -1,112 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro</title>
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f5f6fa;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-
-    .card {
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .card-title {
-      color: royalblue;
-      font-weight: 600;
-    }
-
-    .form-label span {
-      color: grey;
-      font-size: 0.9em;
-    }
-
-    .btn-primary {
-      background-color: royalblue;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background-color: rgb(56, 90, 194);
-    }
-
-    .pulse {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      background-color: royalblue;
-      border-radius: 50%;
-      animation: pulse 1s linear infinite;
-      margin-left: 10px;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.9); opacity: 1; }
-      100% { transform: scale(1.8); opacity: 0; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITSAHACK</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url(assest/fondo.jpg) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card {
+            border-radius: 20px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .form-control:focus {
+            border-color: #2d79f3;
+            box-shadow: 0 0 0 0.2rem rgba(45, 121, 243, 0.25);
+        }
+        .btn-custom {
+            background-color: #151717;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #252727;
+        }
+        .btn-register {
+            background-color: #03b2b2;
+            color: white;
+        }
+        .btn-register:hover {
+            background-color: #029696;
+        }
+        .share-btn {
+            background-color: #2d79f3;
+            color: white;
+        }
+        .share-btn:hover {
+            background-color: #2461c7;
+        }
+        .logo {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 30px auto;
+        }
+        a
+{text-decoration: none;
+color:white;}
+    </style>
 </head>
 <body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card col-md-6 col-lg-4">
+            <img src="assest/masculino.png" alt="Logo" class="logo">
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card p-4">
-        <div class="text-center mb-3">
-          <img src="assest/agregar-usuario.png" alt="Logo" class="img-fluid mb-3" style="max-width: 200px;">
-             </div>
-        <form>
-          <div class="row mb-3">
-            <div class="col">
-              <label class="form-label">
-                <input type="text" class="form-control" required placeholder=" ">
-                <span>Nombre</span>
-              </label>
-            </div>
-            <div class="col">
-              <label class="form-label">
-                <input type="text" class="form-control" required placeholder=" ">
-                <span>Apellido</span>
-              </label>
-            </div>
-          </div>
-          
-          <div class="mb-3">
-            <label class="form-label">
-              <input type="tel" class="form-control" required placeholder=" ">
-              <span>Teléfono</span>
-            </label>
-          </div>
+            <form>
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" placeholder="Ingrese Usuario">
+                </div>
 
-          <div class="mb-3">
-            <label class="form-label">
-              <input type="password" class="form-control" required placeholder=" ">
-              <span>Contraseña</span>
-            </label>
-          </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Ingresar Contraseña">
+                </div>
 
-          <div class="mb-3">
-            <label class="form-label">
-              <input type="password" class="form-control" required placeholder=" ">
-              <span>Confirmar Contraseña</span>
-            </label>
-          </div>
-
-          <button type="submit" class="btn btn-primary w-100">Registrarme</button>
-          <p class="text-center mt-3">¿Tienes una cuenta? <a href="#">Iniciar Sesión</a></p>
-        </form>
-      </div>
+                <button type="submit" class="btn btn-custom w-100 mb-2"><a href="dash.html">Iniciar Sesion</a></button>
+                <button type="button" class="btn btn-register w-100 mb-2" onclick="window.location.href='registro.html'">Registrarme</button>
+                <button type="button" class="btn share-btn w-100" onclick="window.open('https://www.google.com/maps?q=24.034555036700397,-104.64785804078741', '_blank')">Compartir Ubicación</button>
+            </form>
+        </div>
     </div>
-  </div>
-</div>
 
-<!-- Bootstrap 5 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
